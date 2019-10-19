@@ -1,0 +1,7 @@
+# Intellij generated
+.idea/
+
+# App build, library and lock
+build/
+node_modules/
+package-lock.json
