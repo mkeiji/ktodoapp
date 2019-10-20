@@ -8,12 +8,24 @@ import About from "./components/pages/About";
 import axios from "axios";
 
 class App extends Component{
+    placeholderUrls = {
+        getMany: 'https://jsonplaceholder.typicode.com/todos?_limit=10',
+        delete: 'https://jsonplaceholder.typicode.com/todos/',
+        post: 'https://jsonplaceholder.typicode.com/todos'
+    };
+
+    kserver = {
+        getMany: 'http://localhost:8081/server/todos',
+        delete: 'http://localhost:8081/server/todoItem/',
+        post: 'http://localhost:8081/server/todoItem'
+    };
+
     state = {
         todos: []
     };
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+        axios.get(this.kserver.getMany)
             .then(response =>
                 this.setState({
                     todos: response.data
@@ -23,8 +35,8 @@ class App extends Component{
     markComplete = (id) => {
         this.setState({
             todos: this.state.todos.map((todo) => {
-                if (todo.id === id) {
-                    todo.completed = !todo.completed
+                if (todo.Id === id) {
+                    todo.Completed = !todo.Completed
                 }
                 return todo;
             })
@@ -32,26 +44,26 @@ class App extends Component{
     };
 
     delTodo = (id) => {
-        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        axios.delete(this.kserver.delete + id)
             .then(() => this.filterIdOut(id));
     };
 
     filterIdOut = (id) => {
         this.setState({
             todos: [
-                ...this.state.todos.filter((todo) => todo.id !== id)
+                ...this.state.todos.filter((todo) => todo.Id !== id)
             ]
         });
     };
 
     addTodo = (title) => {
         const newTodo = {
-            title: title,
-            completed: false
+            Title: title,
+            Completed: false
         };
 
         // can use .catch to deal with exceptions after .then
-        axios.post('https://jsonplaceholder.typicode.com/todos', newTodo)
+        axios.post(this.kserver.post, newTodo)
             .then(response =>
                 this.setState({
                     todos: [
@@ -63,9 +75,9 @@ class App extends Component{
 
     addTodoWithoutAPI = (title) => {
         const newTodo = {
-            id: this.generateID(),
-            title: title,
-            completed: false
+            Id: this.generateID(),
+            Title: title,
+            Completed: false
         };
 
         this.setState({
@@ -79,7 +91,7 @@ class App extends Component{
     generateID() {
         let idArray = [];
 
-        this.state.todos.map(todo => idArray.push(todo.id));
+        this.state.todos.map(todo => idArray.push(todo.Id));
         idArray.sort(function(a, b) {return a-b});
 
         return this.getLastItem(idArray) + 1;

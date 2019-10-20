@@ -1,9 +1,7 @@
 package structs
 
-import "github.com/jinzhu/gorm"
-
 type Todo struct {
-	gorm.Model
+	Id uint `gorm:"primary_key"`
 	Title string	`gorm:"size:500"`
 	Completed bool	`gorm:"default:'false'"`
 }
