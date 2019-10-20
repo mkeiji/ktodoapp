@@ -17,6 +17,6 @@ func (c AppRouter) SetRouter() *gin.Engine {
 }
 
 func (c AppRouter) Run() {
-	routerErr = r.Run(":8081")
+	routerErr = r.Run(":80")
 	if routerErr != nil { fmt.Println(routerErr) }
 }
