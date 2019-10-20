@@ -7,7 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"todoApp/server/controllers"
-	"todoApp/server/structs"
+	"todoApp/server/repository/structs"
 )
 type Todo = structs.Todo
 
