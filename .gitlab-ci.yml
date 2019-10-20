@@ -1,0 +1,47 @@
+image: golang
+
+stages:
+    - build
+    - release
+
+build-client:
+   stage: build
+   image: node
+   cache:
+        key: app-cache
+        paths:
+            - app/build
+        policy: push
+   script:
+        - cd app/
+        - npm install
+        - npm run build
+
+build-server:
+    stage: build
+    image: mgkeiji/gogcc
+    cache:
+        key: app-cache
+        paths:
+            - .env
+            - todoApp
+        policy: push
+    script:
+        - go build
+
+release:
+    stage: release
+    only:
+        - master
+    image: docker:stable
+    cache:
+        key: app-cache
+        paths:
+            - .env
+            - app/build
+            - todoApp
+        policy: pull
+    script:
+        - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
+        - docker build -t mgkeiji/ktodoapp .
+        - docker push mgkeiji/ktodoapp

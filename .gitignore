@@ -4,8 +4,8 @@
 # App build, library and lock
 build/
 node_modules/
-package-lock.json
 
 # Go
 go.sum
 db/todoApp.db
+todoApp
