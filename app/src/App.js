@@ -15,9 +15,9 @@ class App extends Component{
     };
 
     kserver = {
-        getMany: 'http://localhost:80/server/todos',
-        delete: 'http://localhost:80/server/todoItem/',
-        post: 'http://localhost:80/server/todoItem'
+        getMany: `http://localhost:80/server/todos`,
+        delete: `http://localhost:80/server/todoItem/`,
+        post: `http://localhost:80/server/todoItem`
     };
 
     state = {

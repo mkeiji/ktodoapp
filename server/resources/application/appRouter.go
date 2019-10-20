@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"os"
 )
 
 var r *gin.Engine
@@ -17,6 +18,6 @@ func (c AppRouter) SetRouter() *gin.Engine {
 }
 
 func (c AppRouter) Run() {
-	routerErr = r.Run(":80")
+	routerErr = r.Run(":" + os.Getenv("PORT"))
 	if routerErr != nil { fmt.Println(routerErr) }
 }
