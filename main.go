@@ -14,6 +14,7 @@ var db *gorm.DB
 var router *gin.Engine
 
 func main() {
+	gin.SetMode(gin.ReleaseMode)
 	db = dbContext.SetContext()
 	router = appRouter.SetRouter()
 
