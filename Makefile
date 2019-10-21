@@ -9,4 +9,4 @@ build:
 
 dockerimg:
 	make build
-	docker build -t mgkeiji/todoapp .
+	docker build -t mgkeiji/ktodoapp .
