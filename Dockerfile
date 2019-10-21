@@ -1,10 +1,9 @@
-FROM golang
-WORKDIR /todoApp
+FROM ubuntu
+WORKDIR /myapp
 
-COPY go.mod /todoApp/go.mod
-COPY go.sum /todoApp/go.sum
+COPY db /myapp/db
+COPY todoApp /myapp
+COPY .env /myapp
+COPY app/build /myapp/app/build
 
-RUN go mod download
-
-COPY . /todoApp
-ENTRYPOINT ["go", "run", "main.go"]
+CMD ["./todoApp"]
