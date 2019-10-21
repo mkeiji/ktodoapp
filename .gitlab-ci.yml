@@ -24,8 +24,9 @@ build-server:
         key: app-cache
         paths:
             - .env
+            - app/build
             - todoApp
-        policy: push
+        policy: pull-push
     script:
         - go build
 
