@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:19.04
 WORKDIR /myapp
 
 COPY db /myapp/db
