@@ -7,6 +7,8 @@ import AddTodo from "./components/todos/AddTodo";
 import About from "./components/pages/About";
 import axios from "axios";
 
+const appUrlRoot = 'http://ktodoapp.info.tm';
+
 class App extends Component{
     placeholderUrls = {
         getMany: 'https://jsonplaceholder.typicode.com/todos?_limit=10',
@@ -15,9 +17,9 @@ class App extends Component{
     };
 
     kserver = {
-        getMany: `http://localhost:80/server/todos`,
-        delete: `http://localhost:80/server/todoItem/`,
-        post: `http://localhost:80/server/todoItem`
+        getMany: `${appUrlRoot}/server/todos`,
+        delete: `${appUrlRoot}/server/todoItem/`,
+        post: `${appUrlRoot}/server/todoItem`
     };
 
     state = {
