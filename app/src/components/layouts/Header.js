@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Header() {
     return (
         <header style={headerStyle}>
-            <img src="/klogo.png" style={logoStyle} />
+            <img src="/klogo.png" style={logoStyle} alt="keiji logo" />
             <h1>TodoList</h1>
             <Link style={linkStyle} to="/">Home</Link> | <Link style={linkStyle} to="/about">About</Link>
         </header>
