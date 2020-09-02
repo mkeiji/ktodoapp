@@ -7,7 +7,7 @@ import AddTodo from "./components/todos/AddTodo";
 import About from "./components/pages/About";
 import axios from "axios";
 
-const appUrlRoot = 'http://ktodoapp.keijidev.com';
+const appUrlRoot = 'https://ktodoapp.keijidev.com';
 
 class App extends Component{
     placeholderUrls = {
