@@ -5,12 +5,12 @@ stages:
     - release
 
 build-client:
-   stage: build
-   image: node
-   artifacts:
+    stage: build
+    image: node
+    artifacts:
         paths:
             - app/build
-   script:
+    script:
         - cd app/
         - npm install
         - npm run build
@@ -35,5 +35,5 @@ release:
         - docker:19.03.12-dind
     script:
         - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-        - docker build -t registry.gitlab.com/keijidev/ktodoapp:latest .
-        - docker push registry.gitlab.com/keijidev/ktodoapp:latest
+        - docker build -t registry.gitlab.com/mkeiji/ktodoapp:latest .
+        - docker push registry.gitlab.com/mkeiji/ktodoapp:latest
